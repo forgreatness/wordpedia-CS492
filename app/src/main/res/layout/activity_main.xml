@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.android.githubsearch.MainActivity">
+    tools:context="com.example.android.wordspedia.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,32 +18,26 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/LightSlateGray"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-        <EditText
-            android:id="@+id/et_search_box"
+        <TextView
+            android:id="@+id/word_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:layout_margin="4dp"
-            android:hint="@string/search_box_hint"/>
-
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/search_button_text"
-            android:textSize="22sp"
-            android:layout_margin="4dp"/>
+            android:textStyle="bold|italic"
+            android:background="@color/LightSlateGray"
+            android:textColor="@color/White"
+            android:gravity="center" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:background="@color/LightSlateGray">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_search_results"
+                android:id="@+id/rv_word_infos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -63,9 +57,7 @@
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="32dp"
                 android:visibility="invisible"/>
-
         </FrameLayout>
-
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

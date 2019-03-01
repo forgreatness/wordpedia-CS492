@@ -2,14 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_search"
-        android:title="@string/nav_search"
-        android:icon="@drawable/ic_nav_search" />
+        android:id="@+id/nav_home"
+        android:title="@string/nav_home"
+        android:icon="@drawable/ic_action_home" />
 
     <item
-        android:id="@+id/nav_saved_repos"
-        android:title="@string/nav_saved_repos"
-        android:icon="@drawable/ic_nav_saved_repos" />
+        android:id="@+id/nav_pronunciation"
+        android:title="@string/nav_pronunciation"
+        android:icon="@drawable/ic_action_pronunciation" />
+
+    <item
+        android:id="@+id/nav_rhymes"
+        android:title="@string/nav_rhymes"
+        android:icon="@drawable/ic_action_rhymes"/>
+
+    <item
+        android:id="@+id/nav_frequency"
+        android:title="@string/nav_frequency"
+        android:icon="@drawable/ic_action_frequency"/>
 
     <item
         android:id="@+id/nav_settings"
