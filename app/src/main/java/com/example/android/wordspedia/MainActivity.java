@@ -1,16 +1,11 @@
 package com.example.android.wordspedia;
 
-import android.app.Instrumentation;
-import android.app.SearchManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,21 +22,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.support.v7.widget.SearchView;
 
-import com.example.android.wordspedia.utils.GitHubUtils;
+import com.example.android.wordspedia.data.WordPreference;
 import com.example.android.wordspedia.utils.WordsUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final String VIEWMODEL_KEY = "WordInfosViewModel";
+    private static final String VIEWMODEL_KEY = "WordViewModel";
+    private static final String ACTIVITY_SOURCE_OF_CONTENT = "WORDSAPI";
 
     private RecyclerView mWordInfosRV;
     private WordInfosAdapter mWordInfosAdapter;
     private TextView mLoadingErrorTV;
-    private TextView mWord;
+    private TextView mWordTV;
     private ProgressBar mLoadingIndicatorPB;
     private DrawerLayout mDrawerLayout;
-    private WordInfosViewModel mWordInfosViewModel;
+    private WordViewModel mWordInfosViewModel;
 
     private WordsUtils.WordSearchResults mWordSearchResults;
 
@@ -52,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mWordInfosRV = findViewById(R.id.rv_word_infos);
-        mWord = findViewById(R.id.word_tv);
+        mWordTV = findViewById(R.id.word_tv);
         mLoadingErrorTV = findViewById(R.id.tv_loading_error);
         mLoadingIndicatorPB = findViewById(R.id.pb_loading);
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -73,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mWordInfosAdapter = new WordInfosAdapter(this);
         mWordInfosRV.setAdapter(mWordInfosAdapter);
 
-        mWordInfosViewModel = ViewModelProviders.of(this, new ViewModelFactory(mLoadingIndicatorPB, getURL())).get(WordInfosViewModel.class);
+        mWordInfosViewModel = ViewModelProviders.of(this, new ViewModelFactory(mLoadingIndicatorPB, getURL(), ACTIVITY_SOURCE_OF_CONTENT)).get(WordViewModel.class);
         mWordInfosViewModel.getSearchResults().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String searchResultsJSON) {
@@ -82,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mLoadingErrorTV.setVisibility(View.INVISIBLE);
                     mWordInfosRV.setVisibility(View.VISIBLE);
                     mWordSearchResults = WordsUtils.parseWordSearchResults(searchResultsJSON);
-                    mWord.setText(mWordSearchResults.word);
+                    WordPreference.setWord(mWordSearchResults.word);
+                    mWordTV.setText(mWordSearchResults.word);
                     mWordInfosAdapter.updateWordInfos(mWordSearchResults.results);
                 } else {
                     mLoadingErrorTV.setVisibility(View.VISIBLE);
@@ -91,12 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mLoadingIndicatorPB.setVisibility(View.INVISIBLE);
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mWordInfosViewModel.updateURL(getURL());
     }
 
     @Override
@@ -140,6 +131,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mDrawerLayout.closeDrawers();
         switch (menuItem.getItemId()) {
+            case R.id.nav_helper:
+                Intent helpIntent = new Intent(this, HelpActivity.class);
+                startActivity(helpIntent);
+                return true;
+            case R.id.nav_images:
+                Intent imagesIntent = new Intent(this, WordImagesActivity.class);
+                startActivity(imagesIntent);
+                return true;
+            case R.id.nav_frequency:
+                Intent ratingIntent = new Intent(this, WordRatingActivity.class);
+                startActivity(ratingIntent);
+                return true;
+            case R.id.nav_rhymes:
+                Intent rhymesIntent = new Intent(this, WordRhymesActivity.class);
+                startActivity(rhymesIntent);
+                return true;
+            case R.id.nav_pronunciation:
+                Intent pronunciationIntent = new Intent(this, WordPronunciationActivity.class);
+                startActivity(pronunciationIntent);
+                return true;
             default:
                 return false;
         }

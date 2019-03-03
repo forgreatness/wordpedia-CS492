@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.example.android.wordspedia.utils.WordsUtils;
@@ -55,7 +57,7 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
 
     class WordInfoViewHolder extends RecyclerView.ViewHolder{
 
-        private LinearLayout mInfoItem;
+        private FrameLayout mInfoItem;
         private LinearLayout mDefinitionSection;
         private LinearLayout mPartOfSpeechSection;
         private LinearLayout mSynonymsAntonymsSection;
@@ -77,6 +79,20 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
         private LinearLayout mSubstanceOfHasSubstancesSection;
         private LinearLayout mSubstanceOfSection;
         private LinearLayout mHasSubstancesSection;
+        private LinearLayout mUsageOfHasUsagesSection;
+        private LinearLayout mUsageOfSection;
+        private LinearLayout mHasUsagesSection;
+        private LinearLayout mInCategoryHasCategoriesSection;
+        private LinearLayout mInCategorySection;
+        private LinearLayout mHasCategoriesSection;
+        private LinearLayout mInRegionRegionOfSection;
+        private LinearLayout mInRegionSection;
+        private LinearLayout mRegionOfSection;
+        private LinearLayout mPertainsToSection;
+        private LinearLayout mSimilarToSection;
+        private LinearLayout mEntailsAlsoSection;
+        private LinearLayout mEntailsSection;
+        private LinearLayout mAlsoSection;
 
         private TextView mSynonymsTV;
         private TextView mAntonymsTV;
@@ -93,17 +109,28 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
         private TextView mHasMembersTV;
         private TextView mSubstanceOfTV;
         private TextView mHasSubstancesTV;
+        private TextView mUsageOfTV;
+        private TextView mHasUsagesTV;
+        private TextView mInCategoryTV;
+        private TextView mHasCategoriesTV;
+        private TextView mInRegionTV;
+        private TextView mRegionOfTV;
+        private TextView mPertainsToTV;
+        private TextView mSimilarToTV;
+        private TextView mEntailsTV;
+        private TextView mAlsoTV;
 
         private final String BULLETS_POINTS_UNICODE = "\u2022";
         private final String NEW_LINE_UNICODE = "\n";
         private final String NDASH_UNICODE = "\u2013";
-        private final String SPACES = " ";
+        private final String COMMAS_UNICODE = "\u002c";
+        private final String SPACES = "\u0020";
 
         public WordInfoViewHolder(View itemView){
             super(itemView);
             mInfoItem = itemView.findViewById(R.id.info_item);
             mDefinitionSection = itemView.findViewById(R.id.definition_section);
-            mPartOfSpeechSection = itemView.findViewById(R.id.partofspeech_section);
+            mPartOfSpeechSection = itemView.findViewById(R.id.part_of_speech_section);
             mSynonymsAntonymsSection = itemView.findViewById(R.id.synonyms_antonyms_section);
             mSynonymsSection = itemView.findViewById(R.id.synonyms_section);
             mAntonymsSection = itemView.findViewById(R.id.antonyms_section);
@@ -123,9 +150,23 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
             mSubstanceOfHasSubstancesSection = itemView.findViewById(R.id.substance_of_has_substances_section);
             mSubstanceOfSection = itemView.findViewById(R.id.substance_of_section);
             mHasSubstancesSection = itemView.findViewById(R.id.has_substances_section);
+            mUsageOfHasUsagesSection = itemView.findViewById(R.id.usage_of_has_usages_section);
+            mUsageOfSection = itemView.findViewById(R.id.usage_of_section);
+            mHasUsagesSection = itemView.findViewById(R.id.has_usages_section);
+            mInCategoryHasCategoriesSection = itemView.findViewById(R.id.in_category_has_categories_section);
+            mInCategorySection = itemView.findViewById(R.id.in_category_section);
+            mHasCategoriesSection = itemView.findViewById(R.id.has_categories_section);
+            mInRegionRegionOfSection = itemView.findViewById(R.id.in_region_region_of_section);
+            mInRegionSection = itemView.findViewById(R.id.in_region_section);
+            mRegionOfSection = itemView.findViewById(R.id.region_of_section);
+            mPertainsToSection = itemView.findViewById(R.id.pertains_to_section);
+            mSimilarToSection = itemView.findViewById(R.id.similar_to_section);
+            mEntailsAlsoSection = itemView.findViewById(R.id.entails_also_section);
+            mEntailsSection = itemView.findViewById(R.id.entails_section);
+            mAlsoSection = itemView.findViewById(R.id.also_section);
 
             mDefinitionTV = itemView.findViewById(R.id.definition_tv);
-            mPartOfSpeechTV = itemView.findViewById(R.id.partofspeech_tv);
+            mPartOfSpeechTV = itemView.findViewById(R.id.part_of_speech_tv);
             mSynonymsTV = itemView.findViewById(R.id.synonyms_tv);
             mAntonymsTV = itemView.findViewById(R.id.antonyms_tv);
             mTypeOfTV = itemView.findViewById(R.id.type_of_tv);
@@ -137,8 +178,18 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
             mHasInstancesTV = itemView.findViewById(R.id.has_instances_tv);
             mMemberOfTV = itemView.findViewById(R.id.member_of_tv);
             mHasMembersTV = itemView.findViewById(R.id.has_members_tv);
-            mSubstanceOfSection = itemView.findViewById(R.id.substance_of_section);
-            mHasSubstancesSection = itemView.findViewById(R.id.has_substances_section);
+            mSubstanceOfTV = itemView.findViewById(R.id.substance_of_tv);
+            mHasSubstancesTV = itemView.findViewById(R.id.has_substances_tv);
+            mUsageOfTV = itemView.findViewById(R.id.usage_of_tv);
+            mHasUsagesTV = itemView.findViewById(R.id.has_usages_tv);
+            mInCategoryTV = itemView.findViewById(R.id.in_category_tv);
+            mHasCategoriesTV = itemView.findViewById(R.id.has_categories_tv);
+            mInRegionTV = itemView.findViewById(R.id.in_region_tv);
+            mRegionOfTV = itemView.findViewById(R.id.region_of_tv);
+            mPertainsToTV = itemView.findViewById(R.id.pertains_to_tv);
+            mSimilarToTV = itemView.findViewById(R.id.similar_to_tv);
+            mEntailsTV = itemView.findViewById(R.id.entails_tv);
+            mAlsoTV = itemView.findViewById(R.id.also_tv);
         }
 
         public void bind(WordsUtils.WordResults info){
@@ -173,6 +224,21 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
                 mPartOfSpeechSection.setVisibility(View.VISIBLE);
             }
 
+            if(info.pertainsTo == null){
+                mPertainsToSection.setVisibility(View.GONE);
+            } else{
+                String pertainsToText = "";
+                for (String pertainTo : info.pertainsTo) {
+                    if(info.pertainsTo.get(info.pertainsTo.size()-1) == pertainTo){
+                        pertainsToText = pertainsToText + pertainTo;
+                    }else{
+                        pertainsToText = pertainsToText + pertainTo + COMMAS_UNICODE + SPACES;
+                    }
+                }
+                mPertainsToTV.setText(pertainsToText);
+                mPertainsToSection.setVisibility(View.VISIBLE);
+            }
+
             if(info.examples == null){
                 mExamplesSection.setVisibility(View.GONE);
             }else{
@@ -182,6 +248,48 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
                 }
                 mExamplesTV.setText(examplesText);
                 mExamplesSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.similarTo == null){
+                mSimilarToSection.setVisibility(View.GONE);
+            } else{
+                String similarToText = "" + NDASH_UNICODE + SPACES;
+                for (String similarTo : info.similarTo) {
+                    if(info.similarTo.get(info.similarTo.size()-1) == similarTo){
+                        similarToText = similarToText + similarTo;
+                    }else{
+                        similarToText = similarToText + similarTo + COMMAS_UNICODE + SPACES;
+                    }
+                }
+                mSimilarToTV.setText(similarToText);
+                mSimilarToSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.entails == null && info.also == null){
+                mEntailsAlsoSection.setVisibility(View.GONE);
+            } else{
+                if(info.entails == null){
+                    mEntailsSection.setVisibility(View.GONE);
+                }else{
+                    String entailsText = "";
+                    for (String entail : info.entails) {
+                        entailsText = entailsText + BULLETS_POINTS_UNICODE + SPACES + entail + NEW_LINE_UNICODE;
+                    }
+                    mEntailsTV.setText(entailsText);
+                    mEntailsSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.also == null){
+                    mAlsoSection.setVisibility(View.GONE);
+                }else{
+                    String alsoText = "";
+                    for (String also : info.also) {
+                        alsoText = alsoText + BULLETS_POINTS_UNICODE + SPACES + also + NEW_LINE_UNICODE;
+                    }
+                    mAlsoTV.setText(alsoText);
+                    mAlsoSection.setVisibility(View.VISIBLE);
+                }
+                mEntailsAlsoSection.setVisibility(View.VISIBLE);
             }
 
             if(info.synonyms == null && info.antonyms == null){
@@ -264,6 +372,169 @@ public class WordInfosAdapter extends RecyclerView.Adapter<WordInfosAdapter.Word
                 }
                 mPartOfHasPartsSection.setVisibility(View.VISIBLE);
             }
+
+            if(info.memberOf == null && info.hasMembers == null){
+                mMemberOfHasMembersSection.setVisibility(View.GONE);
+            } else{
+                if(info.memberOf == null){
+                    mMemberOfSection.setVisibility(View.GONE);
+                }else{
+                    String memberOfText = "";
+                    for (String memberOf : info.memberOf) {
+                        memberOfText = memberOfText + BULLETS_POINTS_UNICODE + SPACES + memberOf + NEW_LINE_UNICODE;
+                    }
+                    mMemberOfTV.setText(memberOfText);
+                    mMemberOfSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.hasMembers == null){
+                    mHasMembersSection.setVisibility(View.GONE);
+                } else{
+                    String hasMembersText = "";
+                    for (String hasMember : info.hasMembers) {
+                        hasMembersText = hasMembersText + BULLETS_POINTS_UNICODE + SPACES + hasMember + NEW_LINE_UNICODE;
+                    }
+                    mHasMembersTV.setText(hasMembersText);
+                    mHasMembersSection.setVisibility(View.VISIBLE);
+                }
+                mMemberOfHasMembersSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.usageOf == null && info.hasUsages == null){
+                mUsageOfHasUsagesSection.setVisibility(View.GONE);
+            } else{
+                if(info.usageOf == null){
+                    mUsageOfSection.setVisibility(View.GONE);
+                }else{
+                    String usageOfText = "";
+                    for (String usageOf : info.usageOf) {
+                        usageOfText = usageOfText + BULLETS_POINTS_UNICODE + SPACES + usageOf + NEW_LINE_UNICODE;
+                    }
+                    mUsageOfTV.setText(usageOfText);
+                    mUsageOfSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.hasUsages == null){
+                    mHasUsagesSection.setVisibility(View.GONE);
+                }else{
+                    String hasUsagesText = "";
+                    for (String hasUsage : info.hasUsages) {
+                        hasUsagesText = hasUsagesText + BULLETS_POINTS_UNICODE + SPACES + hasUsage + NEW_LINE_UNICODE;
+                    }
+                    mHasUsagesTV.setText(hasUsagesText);
+                    mHasUsagesSection.setVisibility(View.VISIBLE);
+                }
+                mUsageOfHasUsagesSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.instanceOf == null && info.hasInstances == null){
+                mInstanceOfHasInstancesSection.setVisibility(View.GONE);
+            } else{
+                if(info.instanceOf == null){
+                    mInstanceOfSection.setVisibility(View.GONE);
+                }else{
+                    String instanceOfText = "";
+                    for (String instanceOf : info.instanceOf) {
+                        instanceOfText = instanceOfText + BULLETS_POINTS_UNICODE + SPACES + instanceOf + NEW_LINE_UNICODE;
+                    }
+                    mInstanceOfTV.setText(instanceOfText);
+                    mInstanceOfSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.hasInstances == null){
+                    mHasInstancesSection.setVisibility(View.GONE);
+                }else{
+                    String hasInstancesText = "";
+                    for (String hasInstance : info.hasInstances) {
+                        hasInstancesText = hasInstancesText + BULLETS_POINTS_UNICODE + SPACES + hasInstance + NEW_LINE_UNICODE;
+                    }
+                    mHasInstancesTV.setText(hasInstancesText);
+                    mHasInstancesSection.setVisibility(View.VISIBLE);
+                }
+                mInstanceOfHasInstancesSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.substanceOf == null && info.hasSubstances == null){
+                mSubstanceOfHasSubstancesSection.setVisibility(View.GONE);
+            } else{
+                if(info.substanceOf == null){
+                    mSubstanceOfSection.setVisibility(View.GONE);
+                }else{
+                    String substanceOfText = "";
+                    for (String substanceOf : info.substanceOf) {
+                        substanceOfText = substanceOfText + BULLETS_POINTS_UNICODE + SPACES + substanceOf + NEW_LINE_UNICODE;
+                    }
+                    mSubstanceOfTV.setText(substanceOfText);
+                    mSynonymsSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.hasSubstances == null){
+                    mHasSubstancesSection.setVisibility(View.GONE);
+                }else{
+                    String hasSubstancesText = "";
+                    for (String hasSubstance : info.hasSubstances) {
+                        hasSubstancesText = hasSubstancesText + BULLETS_POINTS_UNICODE + SPACES + hasSubstance + NEW_LINE_UNICODE;
+                    }
+                    mHasSubstancesTV.setText(hasSubstancesText);
+                    mHasSubstancesSection.setVisibility(View.VISIBLE);
+                }
+                mSubstanceOfHasSubstancesSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.inCategory == null && info.hasCategories == null){
+                mInCategoryHasCategoriesSection.setVisibility(View.GONE);
+            } else{
+                if(info.inCategory == null){
+                    mInCategorySection.setVisibility(View.GONE);
+                }else{
+                    String inCategoryText = "";
+                    for (String inCategory : info.inCategory) {
+                        inCategoryText = inCategoryText + BULLETS_POINTS_UNICODE + SPACES + inCategory + NEW_LINE_UNICODE;
+                    }
+                    mInCategoryTV.setText(inCategoryText);
+                    mInCategorySection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.hasCategories == null){
+                    mHasCategoriesSection.setVisibility(View.GONE);
+                }else{
+                    String hasCategoriesText = "";
+                    for (String hasCategory : info.hasCategories) {
+                        hasCategoriesText = hasCategoriesText + BULLETS_POINTS_UNICODE + SPACES + hasCategory + NEW_LINE_UNICODE;
+                    }
+                    mHasCategoriesTV.setText(hasCategoriesText);
+                    mHasCategoriesSection.setVisibility(View.VISIBLE);
+                }
+                mInCategoryHasCategoriesSection.setVisibility(View.VISIBLE);
+            }
+
+            if(info.inRegion == null && info.regionOf == null){
+                mInRegionRegionOfSection.setVisibility(View.GONE);
+            } else{
+                if(info.inRegion == null){
+                    mInRegionSection.setVisibility(View.GONE);
+                }else{
+                    String inRegionText = "";
+                    for (String inRegion : info.inRegion) {
+                        inRegionText = inRegionText + BULLETS_POINTS_UNICODE + SPACES + inRegion + NEW_LINE_UNICODE;
+                    }
+                    mInRegionTV.setText(inRegionText);
+                    mInRegionSection.setVisibility(View.VISIBLE);
+                }
+
+                if(info.regionOf == null){
+                    mRegionOfSection.setVisibility(View.GONE);
+                }else{
+                    String regionOfText = "";
+                    for (String regionOf : info.regionOf) {
+                        regionOfText = regionOfText + BULLETS_POINTS_UNICODE + SPACES + regionOf + NEW_LINE_UNICODE;
+                    }
+                    mRegionOfTV.setText(regionOfText);
+                    mRegionOfSection.setVisibility(View.VISIBLE);
+                }
+                mInRegionRegionOfSection.setVisibility(View.VISIBLE);
+            }
+
         }
     }
 }

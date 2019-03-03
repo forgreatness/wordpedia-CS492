@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WordRatingActivity"
+    android:background="@color/LightSlateGray">
+
+    <TextView
+        android:id="@+id/word_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:textColor="@color/White"
+        android:padding="10dp"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/frequency_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@color/White">
+
+        <TextView
+            android:id="@+id/frequency_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rating_frequency_header"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:padding="5dp"/>
+
+
+        <RatingBar
+            style="?android:attr/ratingBarStyleIndicator"
+            android:id="@+id/frequency_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:isIndicator="true"
+            android:numStars="7"
+            android:stepSize="0.1"
+            android:theme="@style/RatingBar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/usage_per_million_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@color/White">
+
+        <TextView
+            android:id="@+id/usage_per_million_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rating_usage_per_million_header"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/usage_per_million_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/difficulty_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:background="@color/White">
+
+        <TextView
+            android:id="@+id/difficulty_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rating_difficulty_header"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/difficulty_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

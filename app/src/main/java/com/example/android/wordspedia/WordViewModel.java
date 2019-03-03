@@ -1,6 +1,5 @@
 package com.example.android.wordspedia;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -9,20 +8,21 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.android.wordspedia.utils.NetworkUtils;
-import com.example.android.wordspedia.utils.WordsUtils;
 
 import java.io.IOException;
 
-public class WordInfosViewModel extends ViewModel {
+public class WordViewModel extends ViewModel {
 
-    private final static  String TAG = WordInfosViewModel.class.getSimpleName();
+    private final static  String TAG = WordViewModel.class.getSimpleName();
     private MutableLiveData<String> mSearchResultsJSON;
     private String mURL;
+    private String mSourceOfContent;
     private ProgressBar mLoadingIndicatorPB;
 
-    public WordInfosViewModel(ProgressBar loadingIncdicatorPB, String url){
+    public WordViewModel(ProgressBar loadingIncdicatorPB, String url, String sourceOfContent){
         mLoadingIndicatorPB = loadingIncdicatorPB;
         mURL = url;
+        mSourceOfContent = sourceOfContent;
         mSearchResultsJSON = new MutableLiveData<String>();
         loadSearchResults();
     }
@@ -31,23 +31,25 @@ public class WordInfosViewModel extends ViewModel {
         new AsyncTask<Void, Void, String>(){
             protected void onPreExecute() {
                 super.onPreExecute();
-                mLoadingIndicatorPB.setVisibility(View.VISIBLE);
+                if(mLoadingIndicatorPB != null){
+                    mLoadingIndicatorPB.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             protected String doInBackground(Void... voids) {
-                String wordInfosJSON = null;
+                String searchResultsJSON = null;
                 try {
-                    wordInfosJSON = NetworkUtils.doHTTPGet(mURL);
+                    searchResultsJSON = NetworkUtils.doHTTPGet(mURL, mSourceOfContent);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return wordInfosJSON;
+                return searchResultsJSON;
             }
 
             @Override
-            protected void onPostExecute(String forecastJSON) {
-                mSearchResultsJSON.setValue(forecastJSON);
+            protected void onPostExecute(String searchResultsJSON) {
+                mSearchResultsJSON.setValue(searchResultsJSON);
             }
         }.execute();
     }

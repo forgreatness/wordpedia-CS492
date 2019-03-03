@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".WordRhymesActivity"
+    android:background="@color/LightSlateGray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/word_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold|italic"
+            android:textColor="@color/White"
+            android:padding="10dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/all_rhymes_header_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="start"
+            android:text="@string/all_rhymes_header"
+            android:padding="10dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_all_rhymes_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+
+        <TextView
+            android:id="@+id/noun_rhymes_header_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="@string/noun_rhymes_header"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_noun_rhymes_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+
+        <TextView
+            android:id="@+id/verb_rhymes_header_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="@string/verb_rhymes_header"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_verb_rhymes_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

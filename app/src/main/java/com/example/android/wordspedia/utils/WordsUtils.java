@@ -23,15 +23,16 @@ public class WordsUtils {
         public ArrayList<String> synonyms;
         public ArrayList<String> antonyms;
         public ArrayList<String> examples;
+        public ArrayList<String> similarTo;
+        public ArrayList<String> also;
+        public ArrayList<String> entails;
+        public ArrayList<String> pertainsTo;
         public ArrayList<String> typeOf;
         public ArrayList<String> hasTypes;
         public ArrayList<String> partOf;
         public ArrayList<String> hasParts;
         public ArrayList<String> instanceOf;
         public ArrayList<String> hasInstances;
-        public ArrayList<String> similarTo;
-        public ArrayList<String> also;
-        public ArrayList<String> entails;
         public ArrayList<String> memberOf;
         public ArrayList<String> hasMembers;
         public ArrayList<String> substanceOf;
@@ -42,7 +43,6 @@ public class WordsUtils {
         public ArrayList<String> hasUsages;
         public ArrayList<String> inRegion;
         public ArrayList<String> regionOf;
-        public ArrayList<String> pertainsTo;
     }
 
     public static String buildWordSearchURL(String word){
@@ -67,7 +67,7 @@ public class WordsUtils {
 
     public static class PronunciationSearchResults implements Serializable {
         public Syllables syllables;
-        public Object pronunciation;
+        public Pronunciation pronunciation;
     }
 
     public static class Syllables{

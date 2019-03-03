@@ -17,7 +17,9 @@
     <string name="nav_home">Home</string>
     <string name="nav_rhymes">Rhymes</string>
     <string name="nav_pronunciation">Pronunciation</string>
-    <string name="nav_frequency">Frequency</string>
+    <string name="nav_frequency">Rating</string>
+    <string name="nav_helper">Help</string>
+    <string name="nav_images">Images</string>
 
     <!-- Strings for sort-by preference -->
     <string name="pref_sort_key" translatable="false">pref_sort</string>
@@ -90,4 +92,64 @@
     <string name="region_of_header">Region Of</string>
     <string name="in_region_header">In Regions</string>
     <string name="pertains_to_header">Pertains To</string>
+
+    <string name="definition_helper">The meaning of the word, including its part of speech</string>
+    <string name="synonyms_helper">Words that can be interchanged for the original word in the same context</string>
+    <string name="antonyms_helper">Words that have the opposite context of the original word</string>
+    <string name="examples_helper">Example sentences using the word</string>
+    <string name="type_of_helper">Words that are more generic than the original word.Also known as hypernyms</string>
+    <string name="has_types_helper">Words that are more specific than </string>
+    <string name="part_of_helper">The larger whole to which this word belongs. Also known as holonyms</string>
+    <string name="has_parts_helper">Words that are part of the original word. Also known as meronyms</string>
+    <string name="instance_of_helper">Words that the original word is an example of</string>
+    <string name="has_instances_helper">Words that are examples of the original word</string>
+    <string name="similar_to_helper">Words that similar to the original word, but are not synonyms</string>
+    <string name="also_helper">Phrases to which the original word belongs</string>
+    <string name="entails_helper">Words that are implied by the original word. Usually used for verbs</string>
+    <string name="member_of_helper">A group to which the original word belongs</string>
+    <string name="has_members_helper">Words that belong to the group defined by the original word</string>
+    <string name="substance_of_helper">Substances to which the original word is a part of</string>
+    <string name="has_substances_helper">Substances that are part of the original word</string>
+    <string name="in_category_helper">The domain category to which the original word belongs</string>
+    <string name="has_categories_helper">Categories of the original word</string>
+    <string name="usage_of_helper">Words that the original word is a domain usage of</string>
+    <string name="has_usages_helper">Words that are examples of the domain the original word defines</string>
+    <string name="in_region_helper">Regions where the word is used</string>
+    <string name="region_of_helper">A region where words are used</string>
+    <string name="pertains_to_helper">Words to which the original word is relevant</string>
+
+
+    <string name="type_of_example">For example, a hatchback is a type of car</string>
+    <string name="has_types_example">For example, purple has types violet, lavender, mauve, etc ...</string>
+    <string name="part_of_example">For example, a finger is part of a hand, a glove, a paw, etc ...</string>
+    <string name="has_parts_example">For example, a building has parts such as roofing, plumbing, etc ...</string>
+    <string name="instance_of_example">For example, Einstein is an instance of a physicist</string>
+    <string name="has_instances_example">For example, president has instances such as theodore roosevelt, van buren, etc ... </string>
+    <string name="similar_to_example">For example, red is similar to bloody</string>
+    <string name="also_example">For example, bump is used in the phrase bump off</string>
+    <string name="entails_example">For example, rub entails touch</string>
+    <string name="member_of_example">For example, dory is a member of the family zeidae</string>
+    <string name="has_members_example">For example, a cult has members called cultists</string>
+    <string name="substance_of_example">For example, water is a substance of sweat</string>
+    <string name="has_substances_example">For example, wood has a substance called lignin</string>
+    <string name="in_category_example">For example, chaotic is in category physics</string>
+    <string name="has_categories_example">For example, math has categories such as algebra, imaginary, numerical analysis, etc ...</string>
+    <string name="usage_of_example">For example, advil is a usage of trademark, etc ...</string>
+    <string name="has_usages_example">For example, colloquialism is a domain that includes examples like big deal, blue moon etc ...</string>
+    <string name="in_region_example">For example, chips is used in region Britain</string>
+    <string name="region_of_example">For example, Canada is the region of pogey</string>
+    <string name="pertains_to_example">For example, .22-caliber pertains to caliber</string>
+
+    <string name="rating_frequency_header">Frequency</string>
+    <string name="rating_usage_per_million_header">Usage Per Million</string>
+    <string name="rating_difficulty_header">Difficulty</string>
+
+    <string name="all_rhymes_header">All</string>
+    <string name="noun_rhymes_header">Noun</string>
+    <string name="verb_rhymes_header">Verb</string>
+
+    <string name="all_pronunciation_header">All</string>
+    <string name="noun_pronunciation_header">Noun</string>
+    <string name="verb_pronunciation_header">Verb</string>
+
 </resources>

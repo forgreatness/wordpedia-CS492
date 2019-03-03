@@ -14,16 +14,26 @@
     <item
         android:id="@+id/nav_rhymes"
         android:title="@string/nav_rhymes"
-        android:icon="@drawable/ic_action_rhymes"/>
+        android:icon="@drawable/ic_action_rhymes" />
 
     <item
         android:id="@+id/nav_frequency"
         android:title="@string/nav_frequency"
-        android:icon="@drawable/ic_action_frequency"/>
+        android:icon="@drawable/ic_action_frequency" />
+
+    <item
+        android:id="@+id/nav_images"
+        android:title="@string/nav_images"
+        android:icon="@drawable/ic_action_image" />
 
     <item
         android:id="@+id/nav_settings"
         android:title="@string/nav_settings"
         android:icon="@drawable/ic_nav_settings" />
+
+    <item
+        android:id="@+id/nav_helper"
+        android:title="@string/nav_helper"
+        android:icon="@drawable/ic_action_helper" />
 
 </menu>
