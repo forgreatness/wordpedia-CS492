@@ -2,9 +2,11 @@ package com.example.android.wordspedia;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +18,7 @@ import com.example.android.wordspedia.data.WordPreference;
 import com.example.android.wordspedia.utils.UnsplashUtils;
 import com.example.android.wordspedia.utils.WordsUtils;
 
-public class WordImagesActivity extends AppCompatActivity {
+public class WordImagesActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = WordImagesActivity.class.getSimpleName();
     private static final String ACTIVITY_SOURCE_OF_CONTENT = "UNSPLASHAPI";
@@ -70,14 +72,36 @@ public class WordImagesActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+        super.onDestroy();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         mWordImagesViewModel.updateURL(getURL(WordPreference.getWord()));
     }
 
     public String getURL(String word){
-        String unsplashAPIRequestURL = UnsplashUtils.buildUnsplashSearchURL(word);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String numOfImages = sharedPreferences.getString(
+                getString(R.string.pref_num_of_images_key),
+                getString(R.string.pref_num_of_images_default));
+
+        String unsplashAPIRequestURL = UnsplashUtils.buildUnsplashSearchURL(word, numOfImages);
         Log.d(TAG, unsplashAPIRequestURL);
         return unsplashAPIRequestURL;
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        String numOfImages = sharedPreferences.getString(
+                getString(R.string.pref_num_of_images_key),
+                getString(R.string.pref_num_of_images_default));
+
+        String unsplashAPIRequestURL = UnsplashUtils.buildUnsplashSearchURL(WordPreference.getWord(), numOfImages);
+        Log.d(TAG, unsplashAPIRequestURL);
+        mWordImagesViewModel.updateURL(unsplashAPIRequestURL);
     }
 }

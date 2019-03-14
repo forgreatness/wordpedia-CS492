@@ -6,9 +6,13 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Color;
 import android.media.Rating;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -20,6 +24,12 @@ import com.example.android.wordspedia.utils.UnsplashUtils;
 import com.example.android.wordspedia.utils.WordsUtils;
 
 public class WordRatingActivity extends AppCompatActivity {
+
+    private final String BULLETS_POINTS_UNICODE = "\u2022";
+    private final String NEW_LINE_UNICODE = "\n";
+    private final String NDASH_UNICODE = "\u2013";
+    private final String COMMAS_UNICODE = "\u002c";
+    private final String SPACES = "\u0020";
 
     private static final String TAG = WordRatingActivity.class.getSimpleName();
     private static final String ACTIVITY_SOURCE_OF_CONTENT = "WORDSAPI";
@@ -100,6 +110,39 @@ public class WordRatingActivity extends AppCompatActivity {
         String wordsAPIRequestURL = WordsUtils.buildFrequencySearchURL(word);
         Log.d(TAG, wordsAPIRequestURL);
         return wordsAPIRequestURL;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.word_rating_activity_option, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.option_share:
+                shareWordRating();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void shareWordRating(){
+        if(mWordRatingSearchResults.frequency != null){
+            ShareCompat.IntentBuilder.from(this)
+                    .setType("text/plain")
+                    .setSubject(mWordRatingSearchResults.word + " Rating")
+                    .setText(mWordRatingSearchResults.word + " Rating" + NEW_LINE_UNICODE +
+                            "Frequency: " + mWordRatingSearchResults.frequency.zipf + NEW_LINE_UNICODE +
+                            "Usage Per Million Words: " + mWordRatingSearchResults.frequency.perMillion + NEW_LINE_UNICODE +
+                            "Difficulty: " + mWordRatingSearchResults.frequency.diversity)
+                    .setChooserTitle("How would you like to share this Word")
+                    .startChooser();
+
+        }
     }
 
 }

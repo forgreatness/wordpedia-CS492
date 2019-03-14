@@ -65,11 +65,29 @@ public class WordImagesAdapter extends RecyclerView.Adapter<WordImagesAdapter.Wo
         }
 
         public void bind(UnsplashUtils.UnsplashImageItem imageItem) {
+            String imageDescription = "";
             if(imageItem.description != null){
-                mImageDescription.setText(imageItem.description);
+                imageDescription = imageDescription + imageItem.description;
+                if(imageItem.alt_description != null){
+                    imageDescription = imageDescription + " OR " + imageItem.alt_description;
+                }
+                mImageDescription.setText(imageDescription);
+                mImageDescription.setVisibility(View.VISIBLE);
+            }else{
+                if(imageItem.alt_description != null){
+                    imageDescription = imageDescription + imageItem.alt_description;
+                    mImageDescription.setVisibility(View.VISIBLE);
+                    mImageDescription.setText(imageDescription);
+                }else{
+                    mImageDescription.setVisibility(View.GONE);
+                }
             }
+
             if(imageItem.urls.raw != null){
                 Glide.with(mImageOfWord.getContext()).load(imageItem.urls.raw).into(mImageOfWord);
+                mImageOfWord.setVisibility(View.VISIBLE);
+            }else{
+                mImageOfWord.setVisibility(View.GONE);
             }
         }
     }

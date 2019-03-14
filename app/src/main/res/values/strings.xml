@@ -20,6 +20,7 @@
     <string name="nav_frequency">Rating</string>
     <string name="nav_helper">Help</string>
     <string name="nav_images">Images</string>
+    <string name="nav_share">Share</string>
 
     <!-- Strings for sort-by preference -->
     <string name="pref_sort_key" translatable="false">pref_sort</string>
@@ -32,6 +33,22 @@
     <string name="pref_sort_entry_updated">Most-recently updated</string>
     <string name="pref_sort_value_updated" translatable="false">updated</string>
     <string name="pref_sort_default">@string/pref_sort_value_stars</string>
+
+    <string name="pref_num_of_images_key" translatable="false">pref_num_of_images</string>
+    <string name="pref_num_of_images_title">Number of Images</string>
+    <string name="pref_num_of_images_1">1</string>
+    <string name="pref_num_of_images_2">2</string>
+    <string name="pref_num_of_images_3">3</string>
+    <string name="pref_num_of_images_4">4</string>
+    <string name="pref_num_of_images_5">5</string>
+    <string name="pref_num_of_images_6">6</string>
+    <string name="pref_num_of_images_7">7</string>
+    <string name="pref_num_of_images_8">8</string>
+    <string name="pref_num_of_images_9">9</string>
+    <string name="pref_num_of_images_10">10</string>
+    <string name="pref_num_of_images_default">3</string>
+
+
 
     <!-- Strings for programming language preference -->
     <string name="pref_language_key" translatable="false">pref_language</string>
