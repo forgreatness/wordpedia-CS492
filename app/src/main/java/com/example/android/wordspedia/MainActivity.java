@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle args = new Bundle();
         args.putString(SEARCH_URL_KEY, url);
         mLoadingPB.setVisibility(View.VISIBLE);
-        getSupportLoaderManager().restartLoader(GITHUB_SEARCH_LOADER_ID, args, this);
+        getSupportLoaderManager().restartLoad er(GITHUB_SEARCH_LOADER_ID, args, this);
     }
 
     @Override

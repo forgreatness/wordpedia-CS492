@@ -16,7 +16,7 @@ public class UnsplashUtils {
     private final static String UNSPLASH_API_CLIENT_ID_PARAM = "client_id";
     private final static String UNSPLASH_API_CLIENT_SECRET_PARAM = "client_secret";
     private final static String UNSPLASH_API_CLIENT_ID_VALUE = "90af595032ce23870f4e3527b561b0b8982225938d398fbee16920680dc79535";
-    private final static String UNSPLASH_API_CLIENT_SECRET_VALUE = "";
+    private final static String UNSPLASH_API_CLIENT_SECRET_VALUE = "4c4945896dca455a0c608f69c2cd1d713838be3c5e14ab0b34d76690ba99b1c7";
 
     public static class UnsplashSearchResults{
         public ArrayList<UnsplashImageItem> results;

@@ -9,7 +9,7 @@ import okhttp3.Response;
 public class NetworkUtils {
 
     private final static String WORDSAPI_KEY = "X-RapidAPI-Key";
-    private final static String WORDSAPI_VALUE = "";
+    private final static String WORDSAPI_VALUE = "3058b6da03msha4cf6ef8c7fc5f6p121b8ejsn96be3fa3069c";
 
     private final static String UNSPLASH_ACCEPT_VERSION_HEADER = "Accept-Version";
     private final static String UNSPLASH_ACCEPT_VERSION_VALUE = "v1";
